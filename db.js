@@ -26,3 +26,7 @@ const connect = (cb) => {
 const getPrimaryKey = (_id) => {
   return ObjectID(_id);
 }
+
+const getDB = () => {
+  return state.db;
+}
