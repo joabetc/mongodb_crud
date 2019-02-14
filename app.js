@@ -13,7 +13,7 @@ db.connect((err) => {
     process.exit(1);
   } else {
     app.listen(3000, () => {
-      console.log('Connected ti database, app listening on port 3000');
+      console.log('Connected to database, app listening on port 3000');
     });
   }
 });
