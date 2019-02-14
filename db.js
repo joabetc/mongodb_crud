@@ -22,3 +22,7 @@ const connect = (cb) => {
     });
   }
 }
+
+const getPrimaryKey = (_id) => {
+  return ObjectID(_id);
+}
