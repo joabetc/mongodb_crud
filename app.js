@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// read
 app.get('/getTodos', (req, res) => {
   db.getDB()
     .collection(collection)
@@ -25,6 +26,7 @@ app.get('/getTodos', (req, res) => {
     });
 });
 
+// update
 app.put('/:id', (req, res) => {
   const todoID = req.params.id;
   const userInput = req.body;
@@ -42,6 +44,7 @@ app.put('/:id', (req, res) => {
     });
 });
 
+// create
 app.post('/', (req, res) => {
   const userInput = req.body;
   db.getDB().collection(collection).insertOne(userInput, (err, result) => {
@@ -53,6 +56,7 @@ app.post('/', (req, res) => {
   });
 });
 
+// delete
 app.delete('/:id', (req, res) => {
   const todoID = req.params.id;
 
