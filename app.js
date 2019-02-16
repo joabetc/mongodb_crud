@@ -53,6 +53,20 @@ app.post('/', (req, res) => {
   });
 });
 
+app.delete('/:id', (req, res) => {
+  const todoID = req.params.id;
+
+  db.getDB().collection(collection).findOneAndDelete(
+    {_id: db.getPrimaryKey(todoID)}, 
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(result);
+      }
+  });
+});
+
 db.connect((err) => {
   if (err) {
     console.log('Unable to connect to database');
