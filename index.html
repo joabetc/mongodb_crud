@@ -66,6 +66,21 @@
         todoUserInput.val('');
       }
 
+      const deleteTodo = (todo, listItemID, deleteID) => {
+        let deleteButton = $(`#${deleteID}`);
+        deleteButton.click(() => {
+          fetch(`/${todo._id}`, {
+            method: "DELETE"
+          }).then((response) => {
+            return response.json();
+          }).then((data) => {
+            if (data.ok == 1) {
+              $(`#${listItemID}`).remove();
+            }
+          })
+        })
+      }
+
       const buildIDs = (todo) => {
         return {
           editID: "edit_" + todo._id,
@@ -92,7 +107,7 @@
           let ids = buildIDs(todo);
           display.append(buildTemplate(todo, ids));
           //editTodo(todo, ids.todoID, ids. ids.editID);
-          //deleteTodo(todo, ids.listItemID, ids.deleteID);
+          deleteTodo(todo, ids.listItemID, ids.deleteID);
         });
       }
 
