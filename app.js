@@ -39,6 +39,7 @@ app.put('/:id', (req, res) => {
       if (err) {
         console.log(err);
       } else {
+        console.log(result);
         res.json(result);
       }
     });
